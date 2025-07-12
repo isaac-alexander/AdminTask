@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/homepage">TeamWork</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item" *ngIf="workRole.isAdmin()">
+                    <a class="nav-link" routerLink="/create-profile">Create Employee Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="workRole.isAdmin()">
+                    <a class="nav-link" routerLink="/delete-employee">Delete Employee Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/post-gif">Post GIF</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/post-article">Post Article</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/view-gifs">View GIFs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/view-articles">View Articles</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-5 text-center">
+    <h1>Welcome, {{ workRole.currentRole | titlecase }}!</h1>
+</div>
