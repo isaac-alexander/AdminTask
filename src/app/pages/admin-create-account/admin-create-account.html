@@ -34,7 +34,11 @@
 
         <div class="mb-3">
             <label>Job Role</label>
-            <input [(ngModel)]="employee.job_role" name="job_role" class="form-control" required />
+            <select [(ngModel)]="employee.job_role" name="job_role" class="form-select" required>
+                <option value="">-- Select Role --</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+            </select>
         </div>
 
         <div class="mb-3">
