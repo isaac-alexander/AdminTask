@@ -1,4 +1,43 @@
 <div class="container mt-5">
-  <h2>Post a GIF</h2>
-  
+    <h2>Post a GIF</h2>
+    <div class="container mt-5">
+        <h2>Post a GIF</h2>
+
+        <form (ngSubmit)="postGif()" class="mt-3">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input [(ngModel)]="gif.title" name="title" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">GIF URL</label>
+                <input [(ngModel)]="gif.url" name="url" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Post GIF</button>
+        </form>
+
+        <div class="mt-4" *ngIf="gif.url">
+            <h5>Preview:</h5>
+            <img [src]="gif.url" alt="GIF Preview" class="img-fluid" />
+        </div>
+
+        <hr class="my-5" />
+        <div *ngIf="gifs.length">
+            <h3>Your GIF Posts</h3>
+
+            <div *ngFor="let g of gifs" class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ g.title }}</h5>
+
+                    <img [src]="g.url" alt="{{ g.title }}" class="img-fluid mb-3 rounded">
+
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteGif(g.id)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
