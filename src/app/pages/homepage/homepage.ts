@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { WorkRoleService } from '../../services/work-role';
+import { SignInResponse } from '../../SignInResponse';
 
 @Component({
   standalone: true,
@@ -11,5 +11,8 @@ import { WorkRoleService } from '../../services/work-role';
   styleUrls: ['./homepage.css'],
 })
 export class Homepage {
-  constructor(public workRole: WorkRoleService) {}
+  @Input() userData: SignInResponse[] = []
+
+
+  constructor() {}
 }
