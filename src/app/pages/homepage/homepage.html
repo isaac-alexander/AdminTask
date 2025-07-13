@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                <li class="nav-item" *ngIf="workRole.isAdmin()">
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/create-profile">Create Employee Profile</a>
                 </li>
-                <li class="nav-item" *ngIf="workRole.isAdmin()">
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/delete-employee">Delete Employee Profile</a>
                 </li>
 
@@ -33,5 +33,5 @@
 </nav>
 
 <div class="container py-5 text-center">
-    <h1>Welcome, {{ workRole.currentRole | titlecase }}!</h1>
+    <h1>Welcome, !</h1>
 </div>
