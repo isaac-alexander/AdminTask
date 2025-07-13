@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { WorkRoleService } from '../../services/work-role';
 
 @Component({
   standalone: true,
@@ -22,13 +21,13 @@ export class CreateProfile implements OnInit {
     address: '',
   };
 
-  constructor(private router: Router, private workRole: WorkRoleService) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    if (!this.workRole.isAdmin()) {
-      alert('Access denied. Only admins can create employee profiles.');
-      this.router.navigate(['/homepage']);
-    }
+    // if (!this.jobRole.isAdmin()) {
+    //   alert('Access denied. Only admins can create employee profiles.');
+    //   this.router.navigate(['/homepage']);
+    // }
   }
 
   saveProfile() {
