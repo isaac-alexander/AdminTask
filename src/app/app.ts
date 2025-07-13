@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SignInResponse } from './SignInResponse';
 
 @Component({
   selector: 'app-root',
@@ -17,5 +18,9 @@ export class App {
     this.modalService.open(modal);
   }
 
+  
+handleLoggedIn(userData: SignInResponse) {
+  console.log('User data from SignIn:', userData);
+}
 }
 
