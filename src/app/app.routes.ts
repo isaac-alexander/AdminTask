@@ -2,7 +2,6 @@
 import { Routes } from '@angular/router';
 import { SignIn } from './pages/sign-in/sign-in';
 import { AdminCreateAccount } from './pages/admin-create-account/admin-create-account';
-import { CreateProfile } from './pages/create-profile/create-profile';
 import { PostGif } from './pages/post-gif/post-gif';
 import { PostArticle } from './pages/post-article/post-article';
 import { Homepage } from './pages/homepage/homepage';
@@ -11,7 +10,6 @@ export const routes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
     { path: 'signin', component: SignIn },
     { path: 'admin/create-account', component: AdminCreateAccount },
-    { path: 'create-profile', component: CreateProfile },
     { path: 'post-gif', component: PostGif },
     { path: 'post-article', component: PostArticle },
     { path: 'homepage', component: Homepage }
