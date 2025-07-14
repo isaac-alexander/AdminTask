@@ -7,31 +7,26 @@
 
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/create-profile">Create Employee Profile</a>
+                <!-- Create and delete profile Admin only -->
+                <li class="nav-item" *ngIf="isAdmin">
+                    <a class="nav-link" routerLink="/admin/create-account">Create Employee Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAdmin">
                     <a class="nav-link" routerLink="/delete-employee">Delete Employee Profile</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/post-gif">Post GIF</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/post-article">Post Article</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/view-gifs">View GIFs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/view-articles">View Articles</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" routerLink="/post-gif">Post GIF</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/post-article">Post Article</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/view-gifs">View GIFs</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/view-articles">View Articles</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container py-5 text-center">
-    <h1>Welcome, !</h1>
+    <h1>Welcome, {{ fullName }} !</h1>
+    <p *ngIf="isAdmin">You're logged in as <strong>Admin</strong>.</p>
+    <p *ngIf="!isAdmin">You're logged in as <strong>Employee</strong>.</p>
+
 </div>
