@@ -17,9 +17,9 @@ export class SignIn {
   email = '';
   password = '';
   error = '';
+  res: any;
 
   @Output() loggedIn = new EventEmitter<SignInResponse['data']>();
-res: any;
 
 
   constructor(private router: Router, private signInService: SignInService) { }
@@ -35,10 +35,13 @@ res: any;
     this.signInService.signIn(userData).subscribe({
       next: (res) => {
         console.log('response', res);
+        this.res = res;
         this.error = '';
 
-        //emit to homepage
-        //navigate to homepage
+        localStorage.setItem('jobRole', res.data.jobRole);
+        localStorage.setItem('fullName', res.data.fullName);
+
+
         this.loggedIn.emit(res.data)
         this.router.navigate(['/homepage']);
 
