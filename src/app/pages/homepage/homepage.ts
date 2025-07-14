@@ -1,7 +1,6 @@
-import { Component,Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SignInResponse } from '../../SignInResponse';
 
 @Component({
   standalone: true,
@@ -10,9 +9,18 @@ import { SignInResponse } from '../../SignInResponse';
   templateUrl: './homepage.html',
   styleUrls: ['./homepage.css'],
 })
-export class Homepage {
-  @Input() userData: SignInResponse[] = []
+export class Homepage implements OnInit {
+  // boolean... true if role stored is ADMIN
+  isAdmin = false
+  fullName: string = '';
 
 
-  constructor() {}
+  ngOnInit() {
+    this.fullName = localStorage.getItem('fullName') || 'User'; // when fullname is not there use User
+
+    this.isAdmin = localStorage.getItem('jobRole')?.toLowerCase() === 'admin';
+  }
+
+
+  constructor() { }
 }
