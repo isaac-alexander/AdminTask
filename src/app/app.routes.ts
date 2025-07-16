@@ -5,6 +5,7 @@ import { AdminCreateAccount } from './pages/admin-create-account/admin-create-ac
 import { PostGif } from './pages/post-gif/post-gif';
 import { PostArticle } from './pages/post-article/post-article';
 import { Homepage } from './pages/homepage/homepage';
+import { Feed } from './pages/feed/feed';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'admin/create-account', component: AdminCreateAccount },
     { path: 'post-gif', component: PostGif },
     { path: 'post-article', component: PostArticle },
-    { path: 'homepage', component: Homepage }
+    { path: 'homepage', component: Homepage },
+    { path: 'feed', component: Feed }
 
 ];
