@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Latest Posts</h2>
+
+    <div *ngFor="let item of feed" class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+
+            <!-- Article Content -->
+            <div *ngIf="item.type === 'article'">
+                <p class="card-text">{{ item.content }}</p>
+            </div>
+
+            <!-- GIF Content -->
+            <div *ngIf="item.type === 'gif'">
+                <img [src]="item.url" class="img-fluid rounded" alt="GIF" />
+            </div>
+
+            <hr />
+
+            <!-- Comments -->
+            <div *ngIf="item.comments.length">
+                <h6>Comments:</h6>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item" *ngFor="let c of item.comments">
+                        {{ c }}
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Add Comment -->
+            <div class="input-group">
+                <input [(ngModel)]="newComment[item.id]" class="form-control" placeholder="Add a comment" />
+                <button class="btn btn-outline-primary" (click)="addComment(item.id)">
+                    Post
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
