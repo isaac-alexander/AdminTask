@@ -6,6 +6,8 @@ import { PostGif } from './pages/post-gif/post-gif';
 import { PostArticle } from './pages/post-article/post-article';
 import { Homepage } from './pages/homepage/homepage';
 import { Feed } from './pages/feed/feed';
+import { ViewArticle } from './pages/view-article/view-article';
+import { ViewGif } from './pages/view-gif/view-gif';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -14,6 +16,8 @@ export const routes: Routes = [
     { path: 'post-gif', component: PostGif },
     { path: 'post-article', component: PostArticle },
     { path: 'homepage', component: Homepage },
-    { path: 'feed', component: Feed }
+    { path: 'feed', component: Feed },
+    { path: 'article/:id', component: ViewArticle },
+    { path: 'gif/:id', component: ViewGif },
 
 ];
