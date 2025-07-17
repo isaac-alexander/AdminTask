@@ -1,0 +1,35 @@
+<div class="container mt-5" *ngIf="gif; else notFound">
+  <h2 class="mb-4">{{ gif.title }}</h2>
+
+  <img [src]="gif.url" class="img-fluid rounded mb-3" alt="GIF" />
+
+  <hr />
+
+  <h4>Comments</h4>
+  <ul class="list-group mb-3">
+    <li *ngFor="let comment of gif.comments" class="list-group-item">
+      {{ comment }}
+    </li>
+  </ul>
+
+  <div class="input-group">
+    <input
+      [(ngModel)]="newComment"
+      class="form-control"
+      placeholder="Add a comment..."
+    />
+    <button class="btn btn-primary" (click)="addComment()">Post</button>
+  </div>
+
+  <div class="mt-4">
+    <a routerLink="/feed" class="btn btn-outline-secondary">← Back to Feed</a>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="container mt-5">
+    <h2>GIF Not Found</h2>
+    <p>The GIF you're looking for does not exist.</p>
+    <a routerLink="/feed" class="btn btn-outline-secondary">← Back to Feed</a>
+  </div>
+</ng-template>
