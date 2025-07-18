@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FeedItem } from '../../feed-item';
 
@@ -13,6 +13,9 @@ import { FeedItem } from '../../feed-item';
 })
 
 export class Feed {
+
+  constructor(private router: Router) {}
+
   //test data.... replace later
 
   feed: FeedItem[] = [
@@ -45,4 +48,25 @@ export class Feed {
 
     this.newComment[postId] = '';
   }
+
+  deletePost(id: number, type: 'article' | 'gif') {
+  const key = type === 'article' ? 'articles' : 'gifs';
+  const stored = localStorage.getItem(key);
+  const posts = stored ? JSON.parse(stored) : [];
+
+  const updated = posts.filter((p: any) => p.id !== id);
+  localStorage.setItem(key, JSON.stringify(updated));
+
+  // Also remove from in-memory feed
+  this.feed = this.feed.filter(p => p.id !== id);
+}
+
+editPost(item: any) {
+  const route = item.type === 'article' ? `/post-article` : `/post-gif`;
+  // Optionally store the post temporarily for editing
+  localStorage.setItem('editingPost', JSON.stringify(item));
+  this.router.navigate([route]);
+}
+
+
 }
