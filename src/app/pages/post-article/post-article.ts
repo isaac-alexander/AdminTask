@@ -20,6 +20,11 @@ export class PostArticle {
 
   isEditing = false;
 
+    constructor() {
+    const stored = localStorage.getItem('articles');
+    this.articles = stored ? JSON.parse(stored) : [];
+  } 
+  
   postOrUpdateArticle() {
     if (!this.article.title || !this.article.content) {
       alert('Both title and content are required.');
