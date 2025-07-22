@@ -1,17 +1,10 @@
-export type FeedItem =
-    | {
-        id: number;
-        type: 'article'
-        title: string;
-        content: string;
-        createdAt: number
-        comments: string[];
-    }
-    | {
-        id: number;
-        type: 'gif'
-        title: string;
-        url: string;
-        createdAt: number
-        comments: string[];
-    }
+export interface FeedItem {
+    article_id: number;
+    gif_id: number;
+    createdOn: number
+    title: string;
+    article: string;
+    gif: string;
+    author_id: number;
+    comments: string[];
+}
