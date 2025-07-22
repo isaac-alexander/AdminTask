@@ -11,16 +11,10 @@ import { SignInResponse } from './SignInResponse';
 })
 export class App {
 
-  constructor(private modalService: NgbModal) {
-  }
+  constructor(private modalService: NgbModal) {}
 
   public open(modal: any): void {
     this.modalService.open(modal);
   }
-
-  
-handleLoggedIn(userData: SignInResponse) {
-  console.log('User data from SignIn:', userData);
-}
 }
 
