@@ -23,23 +23,23 @@ export class ViewArticle {
     const stored = localStorage.getItem('articles');
     const articles: Article[] = stored ? JSON.parse(stored) : [];
 
-    this.article = articles.find(a => a.id === articleId) || null;
+    // this.article = articles.find(a => a.id === articleId) || null;
   }
 
-  addComment() {
-    if (!this.article || !this.newComment.trim()) return;
+  // addComment() {
+  //   if (!this.article || !this.newComment.trim()) return;
 
-    this.article.comments.push(this.newComment.trim());
+  //   this.article.comments.push(this.newComment.trim());
 
-    const stored = localStorage.getItem('articles');
-    let articles: Article[] = stored ? JSON.parse(stored) : [];
+  //   const stored = localStorage.getItem('articles');
+  //   let articles: Article[] = stored ? JSON.parse(stored) : [];
 
-    const index = articles.findIndex(a => a.id === this.article!.id);
-    if (index !== -1) {
-      articles[index] = this.article;
-      localStorage.setItem('articles', JSON.stringify(articles));
-    }
+  //   const index = articles.findIndex(a => a.id === this.article!.id);
+  //   if (index !== -1) {
+  //     articles[index] = this.article;
+  //     localStorage.setItem('articles', JSON.stringify(articles));
+  //   }
 
-    this.newComment = '';
-  }
+  //   this.newComment = '';
+  // }
 }

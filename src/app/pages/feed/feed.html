@@ -19,33 +19,33 @@
 <div class="container mt-5">
   <h2 class="mb-4 text-center fw-bold">Latest Posts</h2>
 
-  <div *ngFor="let item of feed" class="card mb-4 shadow-sm rounded-4 border-0">
+  <div *ngFor="let item of feeds" class="card mb-4 shadow-sm rounded-4 border-0">
     <div class="card-body">
       <h5 class="card-title mb-2">
-        <a *ngIf="item.type === 'article'; else gifTitle" [routerLink]="['/article', item.id]"
+        <a *ngIf="item.article; else gifTitle" [routerLink]="['/article', item.article_id]"
           class="text-decoration-none text-dark fw-semibold">
           {{ item.title }}
         </a>
         <ng-template #gifTitle>
-          <a [routerLink]="['/gif', item.id]" class="text-decoration-none text-dark fw-semibold">
+          <a [routerLink]="['/gif', item.article_id]" class="text-decoration-none text-dark fw-semibold">
             {{ item.title }}
           </a>
         </ng-template>
       </h5>
 
       <!-- article content -->
-      <div *ngIf="item.type === 'article'" class="mb-3">
-        <p class="card-text text-muted">{{ item.content }}</p>
+      <div *ngIf="item.article" class="mb-3">
+        <p class="card-text text-muted">{{ item.article }}</p>
       </div>
 
       <!-- gif content -->
-      <div *ngIf="item.type === 'gif'" class="mb-3 text-center">
-        <img [src]="item.url" class="img-fluid rounded shadow-sm" alt="GIF" />
+      <div *ngIf="item.gif === 'gif'" class="mb-3 text-center">
+        <!-- <img [src]="item.url" class="img-fluid rounded shadow-sm" alt="GIF" /> -->
       </div>
 
       <div class="d-flex justify-content-end gap-2 mb-3">
         <button class="btn btn-sm btn-outline-secondary" (click)="editPost(item)">Edit</button>
-        <button class="btn btn-sm btn-outline-danger" (click)="deletePost(item.id, item.type)">Delete</button>
+        <!-- <button class="btn btn-sm btn-outline-danger" (click)="deletePost(item.article, item.type)">Delete</button> -->
       </div>
 
 
@@ -54,7 +54,7 @@
       <!-- comments section -->
       <div>
         <h6 class="text-muted mb-2">
-          {{ item.comments.length }} Comment{{ item.comments.length !== 1 ? 's' : '' }}
+          {{ item?.comments?.length }} Comment{{ item?.comments?.length !== 1 ? 's' : '' }}
         </h6>
         <ul class="list-group mb-3">
           <li class="list-group-item py-2 px-3 border-0" *ngFor="let c of item.comments">
@@ -64,8 +64,8 @@
 
         <!-- add comment -->
         <div class="input-group">
-          <input [(ngModel)]="newComment[item.id]" class="form-control" placeholder="Write a comment..." />
-          <button class="btn btn-outline-primary" (click)="addComment(item.id)">Post</button>
+          <input class="form-control" placeholder="Write a comment..." />
+          <button class="btn btn-outline-primary">Post</button>
         </div>
       </div>
     </div>

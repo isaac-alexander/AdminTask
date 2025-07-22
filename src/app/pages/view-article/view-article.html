@@ -18,25 +18,25 @@
             <!-- comment -->
             <h5 class="mt-4">Comments</h5>
 
-            <ul class="list-group mb-3">
+            <!-- <ul class="list-group mb-3">
                 <li *ngFor="let comment of article.comments" class="list-group-item">
                     {{ comment }}
                 </li>
-            </ul>
+            </ul> -->
 
-            <div class="input-group">
+            <!-- <div class="input-group">
                 <input [(ngModel)]="newComment" class="form-control" placeholder="Add a comment..." />
                 <button class="btn btn-primary" (click)="addComment()">Post</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 
 <!--message not found -->
 <ng-template #notFound>
-    <div class="container mt-5 text-center">
+    <!-- <div class="container mt-5 text-center">
         <h2 class="text-danger">Article Not Found</h2>
         <p class="text-muted">The article you're looking for does not exist.</p>
         <a routerLink="/feed" class="btn btn-outline-primary mt-3">Back to Feed</a>
-    </div>
+    </div> -->
 </ng-template>
