@@ -30,7 +30,6 @@ export class Feed {
     })
   }
 
-  
   newComment: { [id: number]: string } = {};
 
   addComment(postId: number) {
@@ -48,10 +47,8 @@ export class Feed {
     localStorage.setItem(key, JSON.stringify(updated));
 
   }
-  editPost(item: any) {
-    const route = item.type === 'article' ? `/post-article` : `/post-gif`;
-    // Optionally store the post temporarily for editing
-    localStorage.setItem('editingPost', JSON.stringify(item));
-    this.router.navigate([route]);
+  editPost(post: FeedItem) {
+    localStorage.setItem('editingPost', JSON.stringify(post));
+    this.router.navigate(['/post-article']);
   }
 }
