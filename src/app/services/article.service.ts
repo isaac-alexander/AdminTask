@@ -27,6 +27,13 @@ export class ArticleService {
         //calling http.post method with 3 params(apiUrl, data, createHttpOptions(token!)) and returns what comes from the call
     }
 
+    updateArticle(data: Article & { id: number }): Observable<ArticleResponse> {
+        const token = localStorage.getItem('token');
+        const header = this.createHttpOptions(token!);
+        const url = `${this.apiUrl}/${data.id}`;
+        return this.http.put<ArticleResponse>(url, data, header);
+    }
+
     createHttpOptions(token: string) {
         return {
             headers: new HttpHeaders({
